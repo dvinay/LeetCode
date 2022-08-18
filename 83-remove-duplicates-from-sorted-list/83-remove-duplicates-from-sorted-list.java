@@ -10,15 +10,20 @@
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
+        // reference for head
         ListNode result = head;
-        ListNode nextNode = head != null && head.next != null ? head.next : null;
-        while(head != null && nextNode != null) {
-            if (nextNode != null && head != null && head.val == nextNode.val ) {
-                head.next = nextNode.next;
-                nextNode = nextNode.next;
-            }
-            if (nextNode != null && head != null && head.val != nextNode.val) {
-                head = head.next;
+        
+        if (result != null) {
+            ListNode nextNode = head.next; // next pointer to find duplicate
+            while(head != null && nextNode != null) {
+                // if duplicate element. make head next skip to next
+                if (head.val == nextNode.val ) {
+                    head.next = nextNode.next;
+                    nextNode = nextNode.next;
+                }
+                if (nextNode != null && head != null && head.val != nextNode.val) {
+                    head = head.next;
+                }
             }
         }
         return result;
