@@ -11,21 +11,18 @@
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
         // reference for head
-        ListNode result = head;
+        ListNode currentNode = head;
+        if (head == null)
+            return null;
         
-        if (result != null) {
-            ListNode nextNode = head.next; // next pointer to find duplicate
-            while(head != null && nextNode != null) {
-                // if duplicate element. make head next skip to next
-                if (head.val == nextNode.val ) {
-                    head.next = nextNode.next;
-                    nextNode = nextNode.next;
-                }
-                if (nextNode != null && head != null && head.val != nextNode.val) {
-                    head = head.next;
-                }
+        while(currentNode.next != null) {
+            if (currentNode.val == currentNode.next.val) {
+                currentNode.next = currentNode.next.next;
+            } else {
+                currentNode = currentNode.next;
             }
         }
-        return result;
+        
+        return head;
     }
 }
