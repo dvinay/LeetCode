@@ -41,7 +41,7 @@ class Solution {
                 currentNode = currentNode.left;
             }
             
-            // take last node as currentNode is null
+            // take last node as currentNode is null and add to results
             currentNode = stack.pop();
             result.add(currentNode.val);
             
@@ -54,8 +54,11 @@ class Solution {
     
     // recursive way
     public void inorderTraversalRecursive(TreeNode root, List<Integer> result) {
+        // travel left subtree
         inorderTraversalRecursive(root.left, result);
+        // add current node value to result
         result.add(root.val);
+        // travle righ subtree
         inorderTraversalRecursive(root.right, result);
     }
 }
