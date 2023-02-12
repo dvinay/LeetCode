@@ -4,17 +4,17 @@ class Solution {
             return -1;
         }
         
-        int maxProfit = 0;
-        int buy = prices[0]; // buy at low
+        int currentMaxProfit = 0; // No profit
+        int buy = prices[0];
         for (int i=0;i<prices.length;i++) {
-            if (buy > prices[i]) {
+            if (buy > prices[i]) { // buy at low
                 buy = prices[i];
             }
-            int profit = prices[i] - buy;
-            if (maxProfit < profit) {
-                maxProfit = profit;
+            int profit = prices[i] - buy; // find profit if we sell current price
+            if (currentMaxProfit < profit) { // check if the profit is already greater than currentMaxProfit
+                currentMaxProfit = profit;
             }
         }
-        return maxProfit;
+        return currentMaxProfit;
     }
 }
