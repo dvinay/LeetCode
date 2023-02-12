@@ -1,9 +1,10 @@
 class Solution {
     public int longestPalindrome(String s) {
-        int[] charCount = new int[128];
-        int palindromeLength = 0;
+        int[] charCount = new int[123];
+        int palindromeLength = 0; // number of even characters + one odd character(optional)
+        
         for (char c:s.toCharArray()) {
-            charCount[c]++;
+            charCount[c]++; // count of number of chanracters
             if (charCount[c]%2 == 0) {
                 palindromeLength += 2;
             }
