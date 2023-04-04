@@ -32,6 +32,7 @@ public class Solution {
         */
         
         //Traversal aproach:
+        /*
         ListNode nodeA = headA;
         ListNode nodeB = headB;
         while (nodeA!=nodeB) {
@@ -39,5 +40,36 @@ public class Solution {
             nodeB = nodeB == null ? headA : nodeB.next;
         }
         return nodeA;
+        */
+        
+        //Length based approach:
+        int aSize = getLength(headA);
+        int bSize = getLength(headB);
+        ListNode nodeA = headA;
+        ListNode nodeB = headB;
+        if (aSize > bSize) {
+            for (int i=0;i<(aSize-bSize);i++) {
+                nodeA = nodeA.next;
+            }
+        } else {
+            for (int i=0;i<(bSize-aSize);i++) {
+                nodeB = nodeB.next;
+            }
+        }
+        
+        while (nodeA!=nodeB) {
+            nodeA = nodeA.next;
+            nodeB = nodeB.next;
+        }
+        return nodeA;
+    }
+    
+    public int getLength(ListNode headA) {
+        int i = 0;
+        while (headA != null) {
+            i++;
+            headA = headA.next;
+        }
+        return i;
     }
 }
