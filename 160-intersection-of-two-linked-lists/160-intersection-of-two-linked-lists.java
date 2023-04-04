@@ -11,6 +11,8 @@
  */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        // first approach: using hashset to identify common element
+        /*
         if (headA == null && headB == null) {
             return null;
         }
@@ -27,5 +29,15 @@ public class Solution {
             headB = headB.next;
         }
         return null;
+        */
+        
+        //Traversal aproach:
+        ListNode nodeA = headA;
+        ListNode nodeB = headB;
+        while (nodeA!=nodeB) {
+            nodeA = nodeA == null ? headB : nodeA.next;
+            nodeB = nodeB == null ? headA : nodeB.next;
+        }
+        return nodeA;
     }
 }
