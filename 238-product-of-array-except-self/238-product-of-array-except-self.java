@@ -1,25 +1,28 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
-        int result[] = new int[nums.length];
-        int runningProduct = 1;
+        int[] result = new int[nums.length];
+        int numberOfZeros = 0;
+        int product = 1;
         
-        //left Pass. product of i is product from 0th to i-1
-        result[0] = 1;
-        for(int i = 0; i < nums.length; i++){
-            result[i] = runningProduct; //keep product of nums until ith
-            runningProduct *= nums[i];
+        for (int num:nums) {
+            if (num == 0) {
+                numberOfZeros++;
+            } else {
+                product *= num;
+            }
         }
         
-        for(int i = 0; i < result.length; i++){
-            System.out.print(result[i]+",");
+        if (numberOfZeros >= 2) {
+            return result;
         }
         
-        //right pass. product of i is product from n-1th to i+1
-        runningProduct = 1;
-        for(int i = nums.length-1 ; i >= 0 ; i--){
-            result[i] = result[i] * runningProduct;
-            runningProduct *= nums[i];//update the runningProduct
+        for (int index = 0; index < nums.length ; index++) {
+            if (numberOfZeros == 1) {
+                result[index] = nums[index] == 0 ? product : 0;
+            } else {
+                result[index] = product/nums[index];
+            }
         }
-        return result; 
+        return result;
     }
 }
