@@ -4,6 +4,11 @@ class Solution {
             return s;
         }
         
+        /* 
+        PreFilling approach: 
+        Prepare each row by reading the string data and concat the each row.
+        */
+        
         StringBuffer[] rows = new StringBuffer[numRows];
         StringBuffer result = new StringBuffer();
         
