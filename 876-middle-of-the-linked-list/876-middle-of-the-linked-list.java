@@ -15,7 +15,7 @@ class Solution {
         while(head != null) {
             head = head.next;
             count++;
-            if (count%2 == 0) {
+            if (count%2 == 0) { // next poistion for even time
                 mid = mid.next;
             }
         }
