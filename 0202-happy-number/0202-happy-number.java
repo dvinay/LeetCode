@@ -1,16 +1,19 @@
 class Solution {
+    private int sumOfSquares(int n) {
+        int result = 0;
+        while (n != 0) {
+            int digit = n % 10;
+            n = n / 10;
+            result += digit * digit;
+        }
+        return result;
+    }
     public boolean isHappy(int n) {
         Set<Integer> temp = new HashSet<>();
-        int num = 0;
+        
         while (n != 1 && !temp.contains(n)) {
             temp.add(n);
-            num = n;
-            n = 0;
-            while (num != 0) {
-                int digit = num % 10;
-                num = num / 10;
-                n += digit * digit;
-            }
+            n = sumOfSquares(n);
             //System.out.println(n);
         }
         return n == 1;
