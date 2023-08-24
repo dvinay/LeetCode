@@ -9,13 +9,24 @@ class Solution {
         return result;
     }
     public boolean isHappy(int n) {
+        int slow=n;
+        int fast=n;
+        
+        do{
+            slow=sumOfSquares(slow);
+            fast=sumOfSquares(sumOfSquares(fast));
+        } while(slow!=fast);
+        
+        return slow == 1;
+        
+        /* Using HashSet to find the duplicate/loop
         Set<Integer> temp = new HashSet<>();
         
         while (n != 1 && !temp.contains(n)) {
             temp.add(n);
             n = sumOfSquares(n);
-            //System.out.println(n);
         }
         return n == 1;
+        */
     }
 }
