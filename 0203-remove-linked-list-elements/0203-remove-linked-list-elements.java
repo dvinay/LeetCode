@@ -17,17 +17,15 @@ class Solution {
             if (head.val == val) {
                 // head is first node
                 if (prev == null) {
-                    head = head.next;
-                    tempHead = head;
+                    tempHead = head.next;
                 } else { 
                     // head is middle node or tail node
                     prev.next = head.next;
-                    head = head.next;
                 }
             } else {
                 prev = head;
-                head = head.next;
             }
+            head = head.next;
         }
         return tempHead;
     }
